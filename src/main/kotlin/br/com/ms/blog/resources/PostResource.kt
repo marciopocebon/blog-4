@@ -17,8 +17,8 @@ class PostResource(
     val title = post.title
     val content = post.content
     val views = post.views
-    val author = post.author
-    val categories = post.categories
+    val author = AuthorResource(post.author)
+    val categories = post.categories.map { CategoryResource(it) }
 
     init {
         add(postLinks(identification))
