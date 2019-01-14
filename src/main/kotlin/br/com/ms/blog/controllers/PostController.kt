@@ -47,8 +47,8 @@ class PostController(
     fun delete(@PathVariable id: Long) = ResponseEntity(postService.delete(id), NO_CONTENT)
 
     @GetMapping(params = ["authorId"])
-    fun findByActorId(@RequestParam actorId: Long, pageable: Pageable): ResponseEntity<List<PostResource>> {
-        val resources = postService.findByAuthorId(actorId).map { PostResource(it) }
+    fun findByAuthorId(@RequestParam authorId: Long): ResponseEntity<List<PostResource>> {
+        val resources = postService.findByAuthorId(authorId).map { PostResource(it) }
 
         return ResponseEntity(resources, OK)
     }
