@@ -58,3 +58,4 @@ Continuous Integration is configured on CircleCI. Checkout the [continuous integ
 
 - Documentation
 - Run with Postman button
+- Deploy Heroku
