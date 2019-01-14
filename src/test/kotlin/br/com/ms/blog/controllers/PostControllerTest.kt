@@ -1,7 +1,6 @@
 package br.com.ms.blog.controllers
 
 import br.com.ms.blog.models.Author
-import br.com.ms.blog.models.Category
 import br.com.ms.blog.models.Post
 import br.com.ms.blog.requests.PostRequest
 import br.com.ms.blog.services.PostService
@@ -70,22 +69,24 @@ class PostControllerTest {
     @Test
     fun `given valid post request should update it and return 200`() {
         val postRequest = PostRequest("Post UPDATED", "Content UPDATED", 1, mutableListOf())
-        val postUpdated = Post(postRequest.title, postRequest.content,)
-        whenever(postService.update(anyLong(), any())).thenReturn(categoryUpdated)
+        val author = Author("Author", "Description")
+        val postUpdated = Post(postRequest.title, postRequest.content, author, mutableListOf())
+
+        whenever(postService.update(anyLong(), any())).thenReturn(postUpdated)
 
         mvc.perform(put("$baseUrl/0")
-                .content(mapper.writeValueAsString(categoryUpdated))
+                .content(mapper.writeValueAsString(postRequest))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk)
     }
-//
-//    @Test
-//    fun `given invalid category should not update it and return 400`() {
-//        val categoryUpdated = Category("")
-//
-//        mvc.perform(put("$baseUrl/0")
-//                .content(mapper.writeValueAsString(categoryUpdated))
-//                .contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isBadRequest)
-//    }
+
+    @Test
+    fun `given invalid post should not update it and return 400`() {
+        val postRequest = PostRequest("", "", 0, emptyList())
+
+        mvc.perform(put("$baseUrl/0")
+                .content(mapper.writeValueAsString(postRequest))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest)
+    }
 }

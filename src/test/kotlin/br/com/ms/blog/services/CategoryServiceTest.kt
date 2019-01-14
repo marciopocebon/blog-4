@@ -39,7 +39,7 @@ class CategoryServiceTest {
     }
 
     @Test(expected = EntityNotFoundException::class)
-    fun `given ID of non existent author should return it`(){
+    fun `given ID of non existent author should throw EntityNotFoundException`(){
         whenever(categoryRepository.findById(anyLong())).thenReturn(null)
 
         categoryService.findById(0)
