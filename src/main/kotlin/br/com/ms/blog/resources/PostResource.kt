@@ -26,7 +26,7 @@ class PostResource(
 
      private fun postLinks(id: Long) = listOf(
             linkTo(methodOn(PostController::class.java).findById(id)).withSelfRel().withType("GET"),
-            linkTo(methodOn(PostController::class.java).findAll(unpaged())).withRel("posts").withType("GET"),
+            linkTo(methodOn(PostController::class.java).findAll()).withRel("posts").withType("GET"),
             linkTo(methodOn(PostController::class.java).delete(id)).withSelfRel().withType("GET")
     )
 }

@@ -37,9 +37,9 @@ class PostRepositoryTest {
     fun `given ID from author with one post should return a page with size 1`() {
         postRepository.save(Post("Title", "Content", author, mutableListOf()))
 
-        val posts = postRepository.findByAuthorId(author.id, unpaged())
+        val posts = postRepository.findByAuthorId(author.id)
 
-        assertThat(posts.totalElements).isEqualTo(1)
+        assertThat(posts.size).isEqualTo(1)
     }
 
     @Test

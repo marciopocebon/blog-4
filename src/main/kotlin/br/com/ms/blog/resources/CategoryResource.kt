@@ -24,7 +24,7 @@ class CategoryResource(
     private fun categoryLinks(id: Long) = listOf(
             linkTo(methodOn(CategoryController::class.java).findById(id)).withSelfRel().withType("GET"),
             linkTo(methodOn(CategoryController::class.java).delete(id)).withSelfRel().withType("DELETE"),
-            linkTo(methodOn(CategoryController::class.java).findAll(unpaged())).withRel("categories").withType("GET"),
+            linkTo(methodOn(CategoryController::class.java).findAll()).withRel("categories").withType("GET"),
             linkTo(methodOn(PostController::class.java).findByCategoryId(id, unpaged())).withRel("posts").withType("GET")
     )
 }

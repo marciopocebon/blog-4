@@ -1,10 +1,8 @@
 package br.com.ms.blog.controllers
 
-import br.com.ms.blog.utils.annotations.PageableMethod
 import br.com.ms.blog.models.Category
 import br.com.ms.blog.resources.CategoryResource
 import br.com.ms.blog.services.CategoryService
-import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus.*
 import org.springframework.http.ResponseEntity
@@ -32,11 +30,10 @@ class CategoryController(
     }
 
     @GetMapping
-    @PageableMethod
-    fun findAll(pageable: Pageable): ResponseEntity<Page<CategoryResource>> {
-        val pageableResource = categoryService.findAll(pageable).map { CategoryResource(it) }
+    fun findAll(): ResponseEntity<List<CategoryResource>> {
+        val resources = categoryService.findAll().map { CategoryResource(it) }
 
-        return ResponseEntity(pageableResource, OK)
+        return ResponseEntity(resources, OK)
     }
 
     @GetMapping("{id}")

@@ -11,7 +11,7 @@ interface PostRepository : Repository<Post, Long> {
 
     fun save(post: Post): Post
 
-    fun findAll(pageable: Pageable): Page<Post>
+    fun findAll(): List<Post>
 
     fun findById(id: Long): Post?
 
@@ -22,10 +22,7 @@ interface PostRepository : Repository<Post, Long> {
     fun deleteByAuthorId(actorId: Long)
 
     @Query("SELECT p FROM Post p WHERE p.author.id = ?1")
-    fun findByAuthorId(actorId: Long, pageable: Pageable): Page<Post>
-
-    @Query("SELECT p FROM Post p INNER JOIN p.categories c WHERE c.id = ?1")
-    fun findByCategoryId(categoryId: Long, pageable: Pageable): Page<Post>
+    fun findByAuthorId(actorId: Long): List<Post>
 
     @Query("SELECT p FROM Post p INNER JOIN p.categories c WHERE c.id = ?1")
     fun findByCategoryId(categoryId: Long): List<Post>

@@ -1,6 +1,5 @@
 package br.com.ms.blog.services
 
-import br.com.ms.blog.utils.annotations.PageableMethod
 import org.springframework.stereotype.Service
 import org.springframework.web.bind.annotation.RequestMethod.GET
 import org.springframework.web.method.HandlerMethod
@@ -18,7 +17,6 @@ class ResourcesService(
 
     private fun isFindAllMethod(info: RequestMappingInfo, method: HandlerMethod) = info.paramsCondition.isEmpty
             && info.methodsCondition.methods.none { it != GET }
-            && method.hasMethodAnnotation(PageableMethod::class.java)
-            && method.methodParameters.size == 1
-            && method.toString().contains("findAll(")
+            && method.methodParameters.isEmpty()
+            && method.toString().endsWith("findAll()")
 }

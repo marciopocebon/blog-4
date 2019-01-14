@@ -1,10 +1,8 @@
 package br.com.ms.blog.controllers
 
-import br.com.ms.blog.utils.annotations.PageableMethod
 import br.com.ms.blog.requests.PostRequest
 import br.com.ms.blog.resources.PostResource
 import br.com.ms.blog.services.PostService
-import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus.*
 import org.springframework.http.ResponseEntity
@@ -31,12 +29,11 @@ class PostController(
         return ResponseEntity(resource, OK)
     }
 
-    @PageableMethod
     @GetMapping
-    fun findAll(pageable: Pageable): ResponseEntity<Page<PostResource>> {
-        val pageableResource = postService.findAll(pageable).map { PostResource(it) }
+    fun findAll(): ResponseEntity<List<PostResource>> {
+        val resources = postService.findAll().map { PostResource(it) }
 
-        return ResponseEntity(pageableResource, OK)
+        return ResponseEntity(resources, OK)
     }
 
     @GetMapping("{id}")
@@ -49,19 +46,17 @@ class PostController(
     @DeleteMapping("{id}")
     fun delete(@PathVariable id: Long) = ResponseEntity(postService.delete(id), NO_CONTENT)
 
-    @PageableMethod
     @GetMapping(params = ["authorId"])
-    fun findByActorId(@RequestParam actorId: Long, pageable: Pageable): ResponseEntity<Page<PostResource>> {
-        val pageableResource = postService.findByAuthorId(actorId, pageable).map { PostResource(it) }
+    fun findByActorId(@RequestParam actorId: Long, pageable: Pageable): ResponseEntity<List<PostResource>> {
+        val resources = postService.findByAuthorId(actorId).map { PostResource(it) }
 
-        return ResponseEntity(pageableResource, OK)
+        return ResponseEntity(resources, OK)
     }
 
-    @PageableMethod
     @GetMapping(params = ["categoryId"])
-    fun findByCategoryId(@RequestParam categoryId: Long, pageable: Pageable): ResponseEntity<Page<PostResource>> {
-        val pageableResource = postService.findByCategoryId(categoryId, pageable).map { PostResource(it) }
+    fun findByCategoryId(@RequestParam categoryId: Long, pageable: Pageable): ResponseEntity<List<PostResource>> {
+        val resources = postService.findByCategoryId(categoryId).map { PostResource(it) }
 
-        return ResponseEntity(pageableResource, OK)
+        return ResponseEntity(resources, OK)
     }
 }

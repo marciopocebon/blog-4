@@ -41,9 +41,9 @@ class CategoryService(
     }
 
     @HystrixCommand(fallbackMethod = "findAllFallback")
-    fun findAll(pageable: Pageable) = categoryRepository.findAll(pageable)
+    fun findAll() = categoryRepository.findAll()
 
-    fun findAllFallback(pageable: Pageable, throwable: Throwable): Page<Category> {
+    fun findAllFallback(throwable: Throwable): List<Category> {
         logger.error("Searching all categories in database fails. Running findAllFallback method", throwable)
 
         throw GeneralException(throwable.localizedMessage)

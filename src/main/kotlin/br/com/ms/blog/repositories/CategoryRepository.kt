@@ -11,7 +11,7 @@ interface CategoryRepository : Repository<Category, Long> {
 
     fun findById(id: Long?): Category?
 
-    fun findAll(pageable: Pageable): Page<Category>
+    fun findAll(): List<Category>
 
     fun delete(category: Category)
 }

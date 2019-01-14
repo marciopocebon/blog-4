@@ -27,7 +27,7 @@ class AuthorResource(
     private fun authorLinks(id: Long) = listOf(
             linkTo(methodOn(AuthorController::class.java).findById(id)).withSelfRel().withType("GET"),
             linkTo(methodOn(AuthorController::class.java).delete(id)).withSelfRel().withType("DELETE"),
-            linkTo(methodOn(AuthorController::class.java).findAll(unpaged())).withRel("actors").withType("GET"),
+            linkTo(methodOn(AuthorController::class.java).findAll()).withRel("actors").withType("GET"),
             linkTo(methodOn(PostController::class.java).findByActorId(id, unpaged())).withRel("posts").withType("GET")
     )
 }

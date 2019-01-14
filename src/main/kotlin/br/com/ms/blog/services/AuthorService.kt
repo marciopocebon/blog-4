@@ -41,9 +41,9 @@ class AuthorService(
     }
 
     @HystrixCommand(fallbackMethod = "findAllFallback")
-    fun findAll(pageable: Pageable) = authorRepository.findAll(pageable)
+    fun findAll() = authorRepository.findAll()
 
-    fun findAllFallback(pageable: Pageable, throwable: Throwable): Page<Author> {
+    fun findAllFallback(throwable: Throwable): List<Author> {
         logger.error("Searching all authors in database fails. Running findAllFallback method", throwable)
 
         throw GeneralException(throwable.localizedMessage)

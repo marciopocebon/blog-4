@@ -9,7 +9,7 @@ interface AuthorRepository : Repository<Author, Long> {
 
     fun save(author: Author): Author
 
-    fun findAll(pageable: Pageable): Page<Author>
+    fun findAll(): List<Author>
 
     fun findById(id: Long): Author?
 

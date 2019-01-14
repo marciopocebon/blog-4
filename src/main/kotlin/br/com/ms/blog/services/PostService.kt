@@ -9,8 +9,6 @@ import br.com.ms.blog.requests.PostRequest
 import br.com.ms.blog.utils.POST_NOT_EXISTS
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand
 import org.slf4j.LoggerFactory
-import org.springframework.data.domain.Page
-import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 
 @Service
@@ -43,9 +41,9 @@ class PostService(
     }
 
     @HystrixCommand(fallbackMethod = "findAllFallback")
-    fun findAll(pageable: Pageable) = postRepository.findAll(pageable)
+    fun findAll() = postRepository.findAll()
 
-    fun findAllFallback(pageable: Pageable, throwable: Throwable): Page<Post> {
+    fun findAllFallback(throwable: Throwable): List<Post> {
         logger.error("Searching all posts in database fails. Running findAllFallback method", throwable)
 
         throw GeneralException(throwable.localizedMessage)
@@ -57,7 +55,7 @@ class PostService(
             ?.let { postRepository.save(it) }
             ?: throw EntityNotFoundException(POST_NOT_EXISTS, "id", id)
 
-    fun findByIdFallback(id: Long, throwable: Throwable): Post{
+    fun findByIdFallback(id: Long, throwable: Throwable): Post {
         logger.error("Finding post by ID $id in database fails. Running findByIdFallback method", throwable)
 
         throw GeneralException(throwable.localizedMessage)
@@ -73,18 +71,18 @@ class PostService(
     }
 
     @HystrixCommand(fallbackMethod = "findByAuthorIdFallback")
-    fun findByAuthorId(authorId: Long, pageable: Pageable) = postRepository.findByAuthorId(authorId, pageable)
+    fun findByAuthorId(authorId: Long) = postRepository.findByAuthorId(authorId)
 
-    fun findByAuthorIdFallback(authorId: Long, pageable: Pageable, throwable: Throwable): Page<Post> {
+    fun findByAuthorIdFallback(authorId: Long, throwable: Throwable): List<Post> {
         logger.error("Finding posts by author ID $authorId in database fails. Running findByAuthorIdFallback method", throwable)
 
         throw GeneralException(throwable.localizedMessage)
     }
 
     @HystrixCommand(fallbackMethod = "findByCategoryIdFallback")
-    fun findByCategoryId(categoryId: Long, pageable: Pageable) = postRepository.findByCategoryId(categoryId, pageable)
+    fun findByCategoryId(categoryId: Long) = postRepository.findByCategoryId(categoryId)
 
-    fun findByCategoryIdFallback(categoryId: Long, pageable: Pageable, throwable: Throwable): Page<Post> {
+    fun findByCategoryIdFallback(categoryId: Long, throwable: Throwable): List<Post> {
         logger.error("Finding posts by category ID $categoryId in database fails. Running findByCategoryIdFallback method", throwable)
 
         throw GeneralException(throwable.localizedMessage)
@@ -92,7 +90,7 @@ class PostService(
 
     @HystrixCommand(fallbackMethod = "deleteCategoryFromPostsFallback")
     fun deleteCategoryFromPosts(category: Category) = postRepository.findByCategoryId(category.id)
-            .apply { forEach { it.categories.remove(category) }}
+            .apply { forEach { it.categories.remove(category) } }
             .forEach { postRepository.save(it) }
 
     fun deleteCategoryFromPostsFallback(category: Category, throwable: Throwable) {
