@@ -1,15 +1,19 @@
 package br.com.ms.blog.requests
 
+import br.com.ms.blog.utils.POST_AUTHOR_ID_NULL
+import br.com.ms.blog.utils.POST_CATEGORIES_IDS_NULL
+import br.com.ms.blog.utils.POST_CONTENT_BLANK
+import br.com.ms.blog.utils.POST_TITLE_BLANK
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 
 class PostRequest(
-        @NotBlank(message = "{post.title.blank}")
+        @field:NotBlank(message = POST_TITLE_BLANK)
         val title: String,
-        @NotBlank(message = "{post.content.blank}")
+        @field:NotBlank(message = POST_CONTENT_BLANK)
         val content: String,
-        @NotNull(message = "{post.author.id.null}")
-        val actorId: Long,
-        @NotNull(message = "{post.categories.id.null}")
+        @field:NotNull(message = POST_AUTHOR_ID_NULL)
+        val authorId: Long,
+        @field:NotNull(message = POST_CATEGORIES_IDS_NULL)
         val categoriesId: List<Long>
 )

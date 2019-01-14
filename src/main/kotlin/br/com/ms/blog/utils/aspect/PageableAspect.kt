@@ -1,6 +1,6 @@
-package br.com.ms.blog.aspect
+package br.com.ms.blog.utils.aspect
 
-import br.com.ms.blog.annotations.PageableMethod
+import br.com.ms.blog.utils.annotations.PageableMethod
 import br.com.ms.blog.utils.page.PageLinks
 import br.com.ms.blog.utils.page.PageResponse
 import org.aspectj.lang.ProceedingJoinPoint
@@ -35,9 +35,10 @@ class PageableAspect {
         return build(page.content, PageLinks(page, method).buildLinks(), pageResponse)
     }
 
-    fun build(content: Any?, links: List<Link>? = null, page: PageResponse? = null) = ResponseEntity(mapOf(
-            "_embedded" to content,
-            "links" to links,
-            "page" to page
-    ), OK)
+    fun build(content: Any?, links: List<Link>? = null, page: PageResponse? = null) =
+            ResponseEntity(mapOf(
+                    "_embedded" to content,
+                    "_links" to links,
+                    "page" to page
+            ), OK)
 }

@@ -17,12 +17,12 @@ interface PostRepository : Repository<Post, Long> {
 
     fun delete(post: Post)
 
-    @Query("SELECT p FROM Post p WHERE p.author.id = ?1")
-    fun findByActorId(actorId: Long, pageable: Pageable): Page<Post>
-
     @Modifying
     @Query("DELETE FROM Post p WHERE p.author.id = ?1")
-    fun deleteByActorId(actorId: Long)
+    fun deleteByAuthorId(actorId: Long)
+
+    @Query("SELECT p FROM Post p WHERE p.author.id = ?1")
+    fun findByAuthorId(actorId: Long, pageable: Pageable): Page<Post>
 
     @Query("SELECT p FROM Post p INNER JOIN p.categories c WHERE c.id = ?1")
     fun findByCategoryId(categoryId: Long, pageable: Pageable): Page<Post>

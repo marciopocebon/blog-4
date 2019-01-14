@@ -14,8 +14,6 @@ O blog consiste nas seguintes entidades:
 
 - Categoria
 	- É importante saber o nome de cada categoria.
-	- Categorias podem ter sub-categorias
-
 
 A API deve implementar as seguintes features:
 

@@ -1,6 +1,6 @@
 package br.com.ms.blog.errors
 
-import br.com.ms.blog.errors.exception.YellowChallengeException
+import br.com.ms.blog.errors.exception.BlogException
 import org.springframework.http.HttpStatus.BAD_REQUEST
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.MethodArgumentNotValidException
@@ -18,6 +18,6 @@ class ErrorHandler {
         return ResponseEntity(ErrorResponse("Invalid data", errors), BAD_REQUEST)
     }
 
-    @ExceptionHandler(YellowChallengeException::class)
-    fun handleYellowChallengeException(ex: YellowChallengeException) = ex.errorResponse()
+    @ExceptionHandler(BlogException::class)
+    fun handleYellowChallengeException(ex: BlogException) = ex.errorResponse()
 }

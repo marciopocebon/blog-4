@@ -4,7 +4,7 @@ import javax.persistence.*
 import javax.persistence.GenerationType.IDENTITY
 
 @Entity
-class Post(
+data class Post(
         var title: String,
         var content: String,
         @ManyToOne

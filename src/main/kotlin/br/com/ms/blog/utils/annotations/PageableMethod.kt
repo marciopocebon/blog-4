@@ -1,4 +1,4 @@
-package br.com.ms.blog.annotations
+package br.com.ms.blog.utils.annotations
 
 @Target(AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)

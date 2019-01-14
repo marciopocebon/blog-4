@@ -1,6 +1,6 @@
 package br.com.ms.blog.controllers
 
-import br.com.ms.blog.annotations.PageableMethod
+import br.com.ms.blog.utils.annotations.PageableMethod
 import br.com.ms.blog.requests.PostRequest
 import br.com.ms.blog.resources.PostResource
 import br.com.ms.blog.services.PostService
@@ -50,9 +50,9 @@ class PostController(
     fun delete(@PathVariable id: Long) = ResponseEntity(postService.delete(id), NO_CONTENT)
 
     @PageableMethod
-    @GetMapping(params = ["actorId"])
+    @GetMapping(params = ["authorId"])
     fun findByActorId(@RequestParam actorId: Long, pageable: Pageable): ResponseEntity<Page<PostResource>> {
-        val pageableResource = postService.findByActorId(actorId, pageable).map { PostResource(it) }
+        val pageableResource = postService.findByAuthorId(actorId, pageable).map { PostResource(it) }
 
         return ResponseEntity(pageableResource, OK)
     }

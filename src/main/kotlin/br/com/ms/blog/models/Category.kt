@@ -1,12 +1,15 @@
 package br.com.ms.blog.models
 
+import br.com.ms.blog.utils.CATEGORY_NAME_BLANK
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType.IDENTITY
 import javax.persistence.Id
+import javax.validation.constraints.NotBlank
 
 @Entity
-class Category(
+data class Category(
+        @field:NotBlank(message = CATEGORY_NAME_BLANK)
         var name: String
 ) {
 

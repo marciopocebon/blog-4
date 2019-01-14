@@ -1,6 +1,6 @@
 package br.com.ms.blog.controllers
 
-import br.com.ms.blog.annotations.PageableMethod
+import br.com.ms.blog.utils.annotations.PageableMethod
 import br.com.ms.blog.models.Category
 import br.com.ms.blog.resources.CategoryResource
 import br.com.ms.blog.services.CategoryService

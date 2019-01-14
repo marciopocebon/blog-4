@@ -2,11 +2,14 @@ spring:
   application:
     name: blog
 
+  main:
+    allow-bean-definition-overriding: true
+
   datasource:
     url: ${MYSQL_URL}
     username: ${MYSQL_USER}
     password: ${MYSQL_PASSWORD}
-    driver-class-name: com.mysql.jdbc.Driver
+    driverClassName: com.mysql.cj.jdbc.Driver
 
   jpa:
     database: mysql
