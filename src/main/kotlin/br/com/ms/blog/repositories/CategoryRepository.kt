@@ -4,6 +4,7 @@ import br.com.ms.blog.models.Category
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.Repository
+import org.springframework.transaction.annotation.Transactional
 
 interface CategoryRepository : Repository<Category, Long> {
 
@@ -13,5 +14,6 @@ interface CategoryRepository : Repository<Category, Long> {
 
     fun findAll(): List<Category>
 
+    @Transactional
     fun delete(category: Category)
 }

@@ -1,9 +1,8 @@
 package br.com.ms.blog.repositories
 
 import br.com.ms.blog.models.Author
-import org.springframework.data.domain.Page
-import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.Repository
+import org.springframework.transaction.annotation.Transactional
 
 interface AuthorRepository : Repository<Author, Long> {
 
@@ -13,5 +12,6 @@ interface AuthorRepository : Repository<Author, Long> {
 
     fun findById(id: Long): Author?
 
+    @Transactional
     fun delete(author: Author)
 }

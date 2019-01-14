@@ -4,6 +4,7 @@ import br.com.ms.blog.models.Post
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.Repository
+import org.springframework.transaction.annotation.Transactional
 
 interface PostRepository : Repository<Post, Long> {
 
@@ -13,6 +14,7 @@ interface PostRepository : Repository<Post, Long> {
 
     fun findById(id: Long): Post?
 
+    @Transactional
     fun delete(post: Post)
 
     @Modifying
