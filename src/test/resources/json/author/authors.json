@@ -1,0 +1,75 @@
+[{
+  "id": 0,
+  "name": "Author 1",
+  "description": "Description 1",
+  "links": [{
+    "rel": "self",
+    "href": "http://localhost/authors/0",
+    "hreflang": null,
+    "media": null,
+    "title": null,
+    "type": "GET",
+    "deprecation": null
+  }, {
+    "rel": "self",
+    "href": "http://localhost/authors/0",
+    "hreflang": null,
+    "media": null,
+    "title": null,
+    "type": "DELETE",
+    "deprecation": null
+  }, {
+    "rel": "authors",
+    "href": "http://localhost/authors",
+    "hreflang": null,
+    "media": null,
+    "title": null,
+    "type": "GET",
+    "deprecation": null
+  }, {
+    "rel": "posts",
+    "href": "http://localhost/posts?authorId=0",
+    "hreflang": null,
+    "media": null,
+    "title": null,
+    "type": "GET",
+    "deprecation": null
+  }]
+}, {
+  "id": 0,
+  "name": "Author 2",
+  "description": "Description 2",
+  "links": [{
+    "rel": "self",
+    "href": "http://localhost/authors/0",
+    "hreflang": null,
+    "media": null,
+    "title": null,
+    "type": "GET",
+    "deprecation": null
+  }, {
+    "rel": "self",
+    "href": "http://localhost/authors/0",
+    "hreflang": null,
+    "media": null,
+    "title": null,
+    "type": "DELETE",
+    "deprecation": null
+  }, {
+    "rel": "authors",
+    "href": "http://localhost/authors",
+    "hreflang": null,
+    "media": null,
+    "title": null,
+    "type": "GET",
+    "deprecation": null
+  }, {
+    "rel": "posts",
+    "href": "http://localhost/posts?authorId=0",
+    "hreflang": null,
+    "media": null,
+    "title": null,
+    "type": "GET",
+    "deprecation": null
+  }]
+}]

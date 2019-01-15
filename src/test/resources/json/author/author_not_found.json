@@ -1,0 +1,8 @@
+{
+  "message": "Entity not found",
+  "errors": [{
+    "message": "None author with requested ID was found",
+    "field": "id",
+    "parameter": 0
+  }]
+}

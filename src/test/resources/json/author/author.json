@@ -1,0 +1,22 @@
+{
+  "id": 0,
+  "name": "Author",
+  "description": "Description",
+  "_links": {
+    "self": [{
+      "href": "http://localhost/authors/0",
+      "type": "GET"
+    }, {
+      "href": "http://localhost/authors/0",
+      "type": "DELETE"
+    }],
+    "authors": {
+      "href": "http://localhost/authors",
+      "type": "GET"
+    },
+    "posts": {
+      "href": "http://localhost/posts?authorId=0",
+      "type": "GET"
+    }
+  }
+}

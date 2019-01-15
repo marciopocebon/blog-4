@@ -1,0 +1,12 @@
+{
+  "message": "Invalid data",
+  "errors": [{
+    "message": "Author name could not be blank",
+    "field": "name",
+    "parameter": ""
+  }, {
+    "message": "Author description could not be blank",
+    "field": "description",
+    "parameter": ""
+  }]
+}
