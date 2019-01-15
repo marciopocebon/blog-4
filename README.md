@@ -58,9 +58,3 @@ Continuous Integration is configured on CircleCI. Checkout the [continuous integ
 - [Spring](https://spring.io/) - Java Framework
 - [Gradle](https://gradle.org/) - Dependency Management
 - [Docker](https://www.docker.com/) - Containerization Platform
-
-## What's next
-
-- Documentation
-- Run with Postman button
-- Deploy Heroku
