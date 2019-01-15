@@ -5,10 +5,10 @@ import br.com.ms.blog.controllers.PostController
 import br.com.ms.blog.models.Category
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyOrder
-import org.springframework.data.domain.Pageable.unpaged
 import org.springframework.hateoas.ResourceSupport
 import org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo
 import org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn
+
 @JsonPropertyOrder("id", "name")
 class CategoryResource(
         category: Category
@@ -26,6 +26,6 @@ class CategoryResource(
             linkTo(methodOn(CategoryController::class.java).findById(id)).withSelfRel().withType("GET"),
             linkTo(methodOn(CategoryController::class.java).delete(id)).withSelfRel().withType("DELETE"),
             linkTo(methodOn(CategoryController::class.java).findAll()).withRel("categories").withType("GET"),
-            linkTo(methodOn(PostController::class.java).findByCategoryId(id, unpaged())).withRel("posts").withType("GET")
+            linkTo(methodOn(PostController::class.java).findByCategoryId(id)).withRel("posts").withType("GET")
     )
 }

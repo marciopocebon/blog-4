@@ -7,7 +7,6 @@ import br.com.ms.blog.models.Post
 import br.com.ms.blog.repositories.PostRepository
 import br.com.ms.blog.requests.PostRequest
 import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.whenever
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
@@ -15,7 +14,6 @@ import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.mockito.Spy
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
@@ -64,7 +62,7 @@ class PostServiceTest {
         val author = Author("Author", "Description")
         val post = Post("Post", "Content", author, mutableListOf(category))
 
-        whenever(postRepository.findByCategoryId(anyLong())).thenReturn(listOf(post))
+        whenever(postRepository.findByCategory(anyLong())).thenReturn(listOf(post))
 
         postService.deleteCategoryFromPosts(category)
 

@@ -3,7 +3,6 @@ package br.com.ms.blog.controllers
 import br.com.ms.blog.requests.PostRequest
 import br.com.ms.blog.resources.PostResource
 import br.com.ms.blog.services.PostService
-import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus.*
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -54,7 +53,7 @@ class PostController(
     }
 
     @GetMapping(params = ["categoryId"])
-    fun findByCategoryId(@RequestParam categoryId: Long, pageable: Pageable): ResponseEntity<List<PostResource>> {
+    fun findByCategoryId(@RequestParam categoryId: Long): ResponseEntity<List<PostResource>> {
         val resources = postService.findByCategoryId(categoryId).map { PostResource(it) }
 
         return ResponseEntity(resources, OK)

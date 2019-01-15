@@ -1,6 +1,7 @@
 package br.com.ms.blog.models
 
 import javax.persistence.*
+import javax.persistence.FetchType.*
 import javax.persistence.GenerationType.IDENTITY
 
 @Entity
@@ -9,7 +10,7 @@ data class Post(
         var content: String,
         @ManyToOne
         var author: Author,
-        @ManyToMany
+        @ManyToMany(fetch = EAGER)
         var categories: MutableList<Category>
 ) {
 

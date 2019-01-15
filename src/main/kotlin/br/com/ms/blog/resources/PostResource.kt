@@ -4,7 +4,6 @@ import br.com.ms.blog.controllers.PostController
 import br.com.ms.blog.models.Post
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyOrder
-import org.springframework.data.domain.Pageable.unpaged
 import org.springframework.hateoas.ResourceSupport
 import org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo
 import org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn

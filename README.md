@@ -12,8 +12,13 @@
      \/__/         \/__/         \/__/         \/__/                  \/__/         \/__/       \/__/  
 ```
 [![CircleCI](https://circleci.com/gh/marioalvial/blog.svg?style=svg)](https://circleci.com/gh/marioalvial/blog)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/8b8e69030a1787869027)
 
-Blog API to you create your own posts.
+Blog API
+
+## Documentation
+
+[Postman](https://documenter.getpostman.com/view/2673922/RznJmbYT)
 
 ## Requirements
 
@@ -27,8 +32,8 @@ For building and running the application you need:
 First, clone the project:
 
 ```shell
-git clone https://github.com/marioalvial/moip-challenge.git
-cd moip-challenge
+git clone https://github.com/marioalvial/blog.git
+cd blog
 ```
 
 #### Running with docker

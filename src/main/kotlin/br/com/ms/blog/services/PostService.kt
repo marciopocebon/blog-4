@@ -80,7 +80,7 @@ class PostService(
     }
 
     @HystrixCommand(fallbackMethod = "findByCategoryIdFallback")
-    fun findByCategoryId(categoryId: Long) = postRepository.findByCategoryId(categoryId)
+    fun findByCategoryId(categoryId: Long) = postRepository.findByCategory(categoryId)
 
     fun findByCategoryIdFallback(categoryId: Long, throwable: Throwable): List<Post> {
         logger.error("Finding posts by category ID $categoryId in database fails. Running findByCategoryIdFallback method", throwable)
@@ -89,7 +89,7 @@ class PostService(
     }
 
     @HystrixCommand(fallbackMethod = "deleteCategoryFromPostsFallback")
-    fun deleteCategoryFromPosts(category: Category) = postRepository.findByCategoryId(category.id)
+    fun deleteCategoryFromPosts(category: Category) = postRepository.findByCategory(category.id)
             .apply { forEach { it.categories.remove(category) } }
             .forEach { postRepository.save(it) }
 

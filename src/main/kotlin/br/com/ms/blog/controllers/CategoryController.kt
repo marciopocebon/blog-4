@@ -3,7 +3,6 @@ package br.com.ms.blog.controllers
 import br.com.ms.blog.models.Category
 import br.com.ms.blog.resources.CategoryResource
 import br.com.ms.blog.services.CategoryService
-import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus.*
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

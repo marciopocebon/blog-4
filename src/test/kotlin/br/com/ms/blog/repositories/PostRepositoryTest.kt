@@ -8,10 +8,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
-import org.springframework.data.domain.Pageable
-import org.springframework.data.domain.Pageable.*
 import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
@@ -47,7 +44,7 @@ class PostRepositoryTest {
         val category = categoryRepository.save(Category("Category"))
         postRepository.save(Post(" Title", " Content", author, mutableListOf(category)))
 
-        val posts = postRepository.findByCategoryId(author.id)
+        val posts = postRepository.findByCategory(author.id)
 
         assertThat(posts.size).isEqualTo(1)
     }
